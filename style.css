@@ -1,0 +1,419 @@
+/* COMS 6113 course site — single page.
+   Layout modeled on the Columbia DAP Lab "agentic-systems" course site. */
+
+:root {
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --text: #142430;
+  --muted: #536877;
+  --bg: #f8fdff;
+  --accent: #1d4f91;
+  --accent-dark: #12345f;
+  --tint: rgba(29, 79, 145, 0.05);
+  --rule: rgba(20, 36, 48, 0.14);
+  --header-h: 3.4rem;
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1.25rem);
+}
+
+body {
+  box-sizing: border-box;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: calc(var(--header-h) + 1rem) clamp(1rem, 4vw, 4rem) 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(248, 253, 255, 0.95);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-nav {
+  box-sizing: border-box;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0.95rem clamp(1rem, 4vw, 4rem) 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 1.75rem;
+}
+
+.site-nav a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0.25rem 0;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--accent);
+}
+
+.site-nav .course-code {
+  font-weight: 800;
+  color: var(--accent);
+  margin-right: auto;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Main column ---------- */
+
+article {
+  min-width: 0;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin: 0.75rem 0 0.5rem;
+  text-wrap: balance;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.75rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 3rem 0 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--accent);
+  max-width: 54rem;
+}
+
+h3 {
+  font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin: 2rem 0 0;
+}
+
+article p,
+article ul,
+article ol {
+  font-size: clamp(1.05rem, 0.95rem + 0.2vw, 1.15rem);
+  line-height: 1.75;
+  max-width: 54rem;
+}
+
+article ul,
+article ol {
+  padding-left: 1.4rem;
+}
+
+article li {
+  padding-block: 0.15rem;
+}
+
+article li::marker {
+  color: var(--accent);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+article a:hover {
+  color: var(--accent-dark);
+  text-decoration-thickness: 2px;
+}
+
+.tbd {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.notice {
+  box-sizing: border-box;
+  margin: 1.25rem 0;
+  padding: 0.85rem 1.1rem;
+  border-left: 4px solid var(--accent);
+  background: var(--tint);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Tables ---------- */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.4rem 0 2rem;
+}
+
+.table-wrapper:focus-visible {
+  outline: 2px solid var(--muted);
+  outline-offset: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+}
+
+thead {
+  border-bottom: 1px solid var(--text);
+}
+
+th,
+td {
+  padding: 0.85rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+th {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+tbody tr + tr {
+  border-top: 1px solid var(--rule);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--tint);
+}
+
+.schedule table {
+  min-width: 44rem;
+  table-layout: fixed;
+}
+
+.schedule th:nth-child(1) { width: 4.5rem; }
+.schedule th:nth-child(2) { width: 6.5rem; }
+.schedule th:nth-child(4) { width: 30%; }
+
+.schedule tr.break td {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.topic {
+  font-weight: 700;
+}
+
+.grading table {
+  max-width: 36rem;
+}
+
+.grading td:nth-child(2),
+.grading th:nth-child(2) {
+  width: 8rem;
+  text-align: right;
+}
+
+/* ---------- Right rail ---------- */
+
+.course-rail {
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.course-rail h2 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+  padding: 0;
+  border: 0;
+}
+
+.course-rail h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0.9rem 0 0.15rem;
+}
+
+.course-rail ul {
+  list-style: none;
+  margin: 0 0 0 0.6rem;
+  padding: 0;
+}
+
+.course-rail li {
+  padding: 0.12rem 0 0.25rem;
+}
+
+.course-rail .detail {
+  display: block;
+}
+
+.course-rail a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.course-rail a:hover {
+  color: var(--accent-dark);
+  text-decoration-thickness: 2px;
+}
+
+.course-rail .role {
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.course-rail .staff-name {
+  text-decoration: none;
+}
+
+.course-rail .staff-name:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  margin-top: 4rem;
+  padding: 1.25rem 0 2.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+footer a {
+  color: inherit;
+}
+
+/* ---------- Responsive layout ---------- */
+
+.course-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "title"
+    "rail"
+    "body";
+}
+
+.title-block { grid-area: title; }
+.course-rail { grid-area: rail; }
+.course-shell article { grid-area: body; }
+
+@media screen and (min-width: 1120px) {
+  .course-shell {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "title rail"
+      "body  rail";
+    column-gap: 2.5rem;
+  }
+
+  .course-rail {
+    align-self: start;
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+    max-height: calc(100vh - var(--header-h) - 3rem);
+    overflow-y: auto;
+    margin-top: 0.75rem;
+    padding: 0.9rem 0.75rem 0.9rem 1.25rem;
+    border-left: 1px solid var(--rule);
+  }
+}
+
+@media screen and (max-width: 1119px) {
+  .course-rail {
+    margin: 0 0 1rem;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+}
+
+@media screen and (min-width: 761px) and (max-width: 1119px) {
+  .course-rail {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.25rem 2rem;
+  }
+
+  .course-rail h2 {
+    grid-column: 1 / -1;
+  }
+
+  .course-rail .rail-group h3:first-child {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  :root {
+    --header-h: 5rem;
+  }
+
+  .site-nav {
+    gap: 0.2rem 0.9rem;
+    padding: 0.55rem 0.85rem 0.5rem;
+  }
+
+  .site-nav .course-code {
+    flex-basis: 100%;
+  }
+
+  .site-nav a {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+@media print {
+  .site-header { display: none; }
+  body { padding-top: 0; background: #fff; }
+  .course-rail { position: static; border: 0; padding: 0; }
+}
